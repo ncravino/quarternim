@@ -1,0 +1,21 @@
+initQuaternion	quaternim.html#initQuaternion,float,float,float,float	quaternim: initQuaternion(r: float; ci: float; cj: float; ck: float): Quaternion	
+scalarToQuaternion	quaternim.html#scalarToQuaternion,float	quaternim: scalarToQuaternion(s: float): Quaternion	
+real	quaternim.html#real,Quaternion	quaternim: real(q: Quaternion): float	
+vector	quaternim.html#vector,Quaternion	quaternim: vector(q: Quaternion): (float, float, float)	
+is_zero	quaternim.html#is_zero,Quaternion	quaternim: is_zero(q: Quaternion): bool	
+is_identity	quaternim.html#is_identity,Quaternion	quaternim: is_identity(q: Quaternion): bool	
+is_vector	quaternim.html#is_vector,Quaternion	quaternim: is_vector(q: Quaternion): bool	
+is_scalar	quaternim.html#is_scalar,Quaternion	quaternim: is_scalar(q: Quaternion): bool	
+`==`	quaternim.html#==,Quaternion,Quaternion	quaternim: `==`(q1: Quaternion; q2: Quaternion): bool	
+`$`	quaternim.html#$,Quaternion	quaternim: `$`(q: Quaternion): string	
+`+`	quaternim.html#+,Quaternion,Quaternion	quaternim: `+`(q1: Quaternion; q2: Quaternion): Quaternion	
+`-`	quaternim.html#-,Quaternion,Quaternion	quaternim: `-`(q1: Quaternion; q2: Quaternion): Quaternion	
+`*`	quaternim.html#*,float,Quaternion	quaternim: `*`(s: float; q: Quaternion): Quaternion	
+`*`	quaternim.html#*,Quaternion,float	quaternim: `*`(q: Quaternion; s: float): Quaternion	
+`/`	quaternim.html#/,Quaternion,float	quaternim: `/`(q: Quaternion; s: float): Quaternion	
+`*`	quaternim.html#*,Quaternion,Quaternion	quaternim: `*`(q1: Quaternion; q2: Quaternion): Quaternion	
+conj	quaternim.html#conj,Quaternion	quaternim: conj(q: Quaternion): Quaternion	
+norm	quaternim.html#norm,Quaternion	quaternim: norm(q: Quaternion): float	
+inverse	quaternim.html#inverse,Quaternion	quaternim: inverse(q: Quaternion): Quaternion	
+unit	quaternim.html#unit,Quaternion	quaternim: unit(q: Quaternion): Quaternion	
+is_unit	quaternim.html#is_unit,Quaternion	quaternim: is_unit(q: Quaternion): bool	
