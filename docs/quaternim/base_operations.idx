@@ -1,0 +1,22 @@
+initQuaternion	quaternim/base_operations.html#initQuaternion,float,float,float,float	base_operations: initQuaternion(r: float; ci: float; cj: float; ck: float): Quaternion	
+scalarToQuaternion	quaternim/base_operations.html#scalarToQuaternion,float	base_operations: scalarToQuaternion(s: float): Quaternion	
+real	quaternim/base_operations.html#real,Quaternion	base_operations: real(q: Quaternion): float	
+vector	quaternim/base_operations.html#vector,Quaternion	base_operations: vector(q: Quaternion): (float, float, float)	
+is_zero	quaternim/base_operations.html#is_zero,Quaternion	base_operations: is_zero(q: Quaternion): bool	
+is_identity	quaternim/base_operations.html#is_identity,Quaternion	base_operations: is_identity(q: Quaternion): bool	
+is_vector	quaternim/base_operations.html#is_vector,Quaternion	base_operations: is_vector(q: Quaternion): bool	
+is_scalar	quaternim/base_operations.html#is_scalar,Quaternion	base_operations: is_scalar(q: Quaternion): bool	
+`==`	quaternim/base_operations.html#==,Quaternion,Quaternion	base_operations: `==`(q1: Quaternion; q2: Quaternion): bool	
+`$`	quaternim/base_operations.html#$,Quaternion	base_operations: `$`(q: Quaternion): string	
+`+`	quaternim/base_operations.html#+,Quaternion,Quaternion	base_operations: `+`(q1: Quaternion; q2: Quaternion): Quaternion	
+`-`	quaternim/base_operations.html#-,Quaternion,Quaternion	base_operations: `-`(q1: Quaternion; q2: Quaternion): Quaternion	
+`*`	quaternim/base_operations.html#*,float,Quaternion	base_operations: `*`(s: float; q: Quaternion): Quaternion	
+`*`	quaternim/base_operations.html#*,Quaternion,float	base_operations: `*`(q: Quaternion; s: float): Quaternion	
+`/`	quaternim/base_operations.html#/,Quaternion,float	base_operations: `/`(q: Quaternion; s: float): Quaternion	
+`*`	quaternim/base_operations.html#*,Quaternion,Quaternion	base_operations: `*`(q1: Quaternion; q2: Quaternion): Quaternion	
+conj	quaternim/base_operations.html#conj,Quaternion	base_operations: conj(q: Quaternion): Quaternion	
+norm	quaternim/base_operations.html#norm,Quaternion	base_operations: norm(q: Quaternion): float	
+inverse	quaternim/base_operations.html#inverse,Quaternion	base_operations: inverse(q: Quaternion): Quaternion	
+is_unit	quaternim/base_operations.html#is_unit,UnitQuaternion	base_operations: is_unit(q: UnitQuaternion): bool	
+is_unit	quaternim/base_operations.html#is_unit,Quaternion	base_operations: is_unit(q: Quaternion): bool	
+unit	quaternim/base_operations.html#unit,Quaternion	base_operations: unit(q: Quaternion): Quaternion	

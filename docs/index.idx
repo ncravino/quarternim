@@ -1,0 +1,24 @@
+initQuaternion	index.html#initQuaternion,float,float,float,float	index: initQuaternion(r: float; ci: float; cj: float; ck: float): Quaternion	
+scalarToQuaternion	index.html#scalarToQuaternion,float	index: scalarToQuaternion(s: float): Quaternion	
+real	index.html#real,Quaternion	index: real(q: Quaternion): float	
+vector	index.html#vector,Quaternion	index: vector(q: Quaternion): (float, float, float)	
+is_zero	index.html#is_zero,Quaternion	index: is_zero(q: Quaternion): bool	
+is_identity	index.html#is_identity,Quaternion	index: is_identity(q: Quaternion): bool	
+is_vector	index.html#is_vector,Quaternion	index: is_vector(q: Quaternion): bool	
+is_scalar	index.html#is_scalar,Quaternion	index: is_scalar(q: Quaternion): bool	
+`==`	index.html#==,Quaternion,Quaternion	index: `==`(q1: Quaternion; q2: Quaternion): bool	
+`$`	index.html#$,Quaternion	index: `$`(q: Quaternion): string	
+`+`	index.html#+,Quaternion,Quaternion	index: `+`(q1: Quaternion; q2: Quaternion): Quaternion	
+`-`	index.html#-,Quaternion,Quaternion	index: `-`(q1: Quaternion; q2: Quaternion): Quaternion	
+`*`	index.html#*,float,Quaternion	index: `*`(s: float; q: Quaternion): Quaternion	
+`*`	index.html#*,Quaternion,float	index: `*`(q: Quaternion; s: float): Quaternion	
+`/`	index.html#/,Quaternion,float	index: `/`(q: Quaternion; s: float): Quaternion	
+`*`	index.html#*,Quaternion,Quaternion	index: `*`(q1: Quaternion; q2: Quaternion): Quaternion	
+conj	index.html#conj,Quaternion	index: conj(q: Quaternion): Quaternion	
+norm	index.html#norm,Quaternion	index: norm(q: Quaternion): float	
+inverse	index.html#inverse,Quaternion	index: inverse(q: Quaternion): Quaternion	
+is_unit	index.html#is_unit,UnitQuaternion	index: is_unit(q: UnitQuaternion): bool	
+is_unit	index.html#is_unit,Quaternion	index: is_unit(q: Quaternion): bool	
+unit	index.html#unit,Quaternion	index: unit(q: Quaternion): Quaternion	
+rotationQuaternion	index.html#rotationQuaternion,float,float,float	index: rotationQuaternion(yaw: float; pitch: float; roll: float): RotationQuaternion	
+rotateVector	index.html#rotateVector,RotationQuaternion,float,float,float	index: rotateVector(rq: RotationQuaternion; x: float; y: float; z: float): tuple[\n    x: float, y: float, z: float]	

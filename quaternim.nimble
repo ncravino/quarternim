@@ -12,4 +12,4 @@ srcDir = "src"
 requires "nim >= 1.6.12"
 
 task build_docs, "Build docs":
-    exec "nim doc --index:on --project --outdir:docs src/quaternim.nim"
+    exec "nim doc --index:on --project --outdir:docs src/quaternim.nim && cp docs/quaternim.html docs/index.html"
