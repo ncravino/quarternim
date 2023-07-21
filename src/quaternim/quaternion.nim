@@ -1,6 +1,7 @@
 
 type
-  Quaternion* = ref object
+  Quaternion* = ref object of RootObj
     r*,ci*,cj*,ck*: float
 
-type QDivByZeroDefect* = object of ArithmeticDefect
+type UnitQuaternion* = ref object of Quaternion
+
