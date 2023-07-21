@@ -1,6 +1,6 @@
 import quaternion
 import std/strformat
-import std/math 
+import std/math
 
 
 type QDivByZeroDefect* = object of ArithmeticDefect
@@ -9,48 +9,48 @@ proc initQuaternion*(r: float, ci: float, cj: float, ck: float): Quaternion =
   ## Initializes quaternion r + ci\*j + cj\*j + ck\*k
   return Quaternion(r: r, ci: ci, cj: cj, ck: ck)
 
-proc scalarToQuaternion*(s:float) : Quaternion = 
+proc scalarToQuaternion*(s: float): Quaternion =
   ## Creates a scalar quaternion from s
-  return Quaternion(r:s , ci:0.0, cj: 0.0, ck:0.0)
+  return Quaternion(r: s, ci: 0.0, cj: 0.0, ck: 0.0)
 
-proc real*(q : Quaternion) : float = 
+proc real*(q: Quaternion): float =
   ## Gets the real part of the quaternion
   return q.r
 
-proc vector*(q: Quaternion) : (float,float,float) = 
+proc vector*(q: Quaternion): (float, float, float) =
   ## Gets the vector part of the quaternion
   return (q.ci, q.cj, q.ck)
 
-proc is_zero* (q : Quaternion) : bool = 
+proc is_zero*(q: Quaternion): bool =
   ## True if q is the zero quaternion
-  return q.r == 0 and q.ci == 0 and q.cj == 0 and q.ck == 0 
+  return q.r == 0 and q.ci == 0 and q.cj == 0 and q.ck == 0
 
-proc is_identity* (q : Quaternion) : bool = 
+proc is_identity*(q: Quaternion): bool =
   ## True if q is the multiplicative identity quaternion
-  return q.r == 1.0 and q.ci == 0 and q.cj == 0 and q.ck == 0 
+  return q.r == 1.0 and q.ci == 0 and q.cj == 0 and q.ck == 0
 
-proc is_vector* (q : Quaternion) : bool = 
+proc is_vector*(q: Quaternion): bool =
   ## True if q is a vector quaternion
   return q.r == 0 and (q.ci != 0 or q.cj != 0 or q.ck != 0)
 
-proc is_scalar* (q : Quaternion) : bool = 
+proc is_scalar*(q: Quaternion): bool =
   ## True if q is a scalar quaternion
   return q.r != 0 and q.ci == 0 and q.cj == 0 and q.ck == 0
 
-proc approximate_equal*(q1 : Quaternion, q2 : Quaternion, places : int) : bool =
-  round(q1.r - q2.r, places) == 0 and 
-    round(q1.ci - q2.ci, places) == 0 and 
-    round(q1.cj - q2.cj, places) == 0 and 
-    round(q1.ck - q2.ck, places) == 0 
+proc approximate_equal*(q1: Quaternion, q2: Quaternion, places: int): bool =
+  round(q1.r - q2.r, places) == 0 and
+    round(q1.ci - q2.ci, places) == 0 and
+    round(q1.cj - q2.cj, places) == 0 and
+    round(q1.ck - q2.ck, places) == 0
 
-proc `==`* (q1: Quaternion, q2: Quaternion) : bool =
+proc `==`*(q1: Quaternion, q2: Quaternion): bool =
   ## True if q1 and q2 are the same quaternion
-  approximate_equal(q1,q2, 12)
+  approximate_equal(q1, q2, 12)
 
 proc `$`*(q: Quaternion): string =
   ## Algebraic representation in the form of r + (ci)i + (cj)j + (ck)k
   return &"{q.r} + ({q.ci})i + ({q.cj})j + ({q.ck})k"
-  
+
 
 proc `+`*(q1: Quaternion, q2: Quaternion): Quaternion =
   ## Addition of two quaternions
@@ -62,18 +62,18 @@ proc `-`*(q1: Quaternion, q2: Quaternion): Quaternion =
   return Quaternion(r: q1.r-q2.r, ci: q1.ci-q2.ci, cj: q1.cj-q2.cj,
       ck: q1.ck-q2.ck)
 
-proc `*`* (s : float, q : Quaternion) : Quaternion = 
+proc `*`*(s: float, q: Quaternion): Quaternion =
   ## Left scalar multiplication of s by  q
   return Quaternion(r: s*q.r, ci: s*q.ci, cj: s*q.cj, ck: s*q.ck)
 
-proc `*`* (q : Quaternion, s : float) : Quaternion = 
+proc `*`*(q: Quaternion, s: float): Quaternion =
   ## Right scalar multiplication of q by s
   return Quaternion(r: s*q.r, ci: s*q.ci, cj: s*q.cj, ck: s*q.ck)
 
-proc `/`* (q : Quaternion, s : float) : Quaternion {.raises: [QDivByZeroDefect].} = 
+proc `/`*(q: Quaternion, s: float): Quaternion {.raises: [QDivByZeroDefect].} =
   ## Right scalar division of q by non-zero s
   if s == 0:
-     raise newException(QDivByZeroDefect, "Attempted to divide the quaternion by 0") 
+    raise newException(QDivByZeroDefect, "Attempted to divide the quaternion by 0")
   return Quaternion(r: q.r/s, ci: q.ci/s, cj: q.cj/s, ck: q.ck/s)
 
 proc `*`*(q1: Quaternion, q2: Quaternion): Quaternion =
@@ -88,34 +88,34 @@ proc conj*(q: Quaternion): Quaternion =
   ## Complex Conjugate of q
   return Quaternion(r: q.r, ci: -q.ci, cj: -q.cj, ck: -q.ck)
 
-proc norm*(q : Quaternion) : float = 
+proc norm*(q: Quaternion): float =
   ## Norm of q
   return sqrt(q.r^2 + q.ci^2 + q.cj^2 + q.ck^2)
 
-proc inverse*(q : Quaternion) : Quaternion  {.raises: [QDivByZeroDefect].} = 
+proc inverse*(q: Quaternion): Quaternion {.raises: [QDivByZeroDefect].} =
   ## Inverse of q
   if is_zero (q):
     raise newException(QDivByZeroDefect, "Zero Quaternion has no Inverse")
   conj(q)*(1.0/(q.r^2 + q.ci^2 + q.cj^2 + q.ck^2))
 
-proc to_unit_quaternion(q : Quaternion) : UnitQuaternion = 
-    return UnitQuaternion(r:q.r, ci:q.ci, cj:q.cj, ck: q.ck)
+proc to_unit_quaternion(q: Quaternion): UnitQuaternion =
+  return UnitQuaternion(r: q.r, ci: q.ci, cj: q.cj, ck: q.ck)
 
-proc is_unit* (q : UnitQuaternion) : bool = 
-    ## True if q is type UnitQuaternion
-    true
+proc is_unit*(q: UnitQuaternion): bool =
+  ## True if q is type UnitQuaternion
+  true
 
-proc is_unit* (q : Quaternion) : bool = 
+proc is_unit*(q: Quaternion): bool =
   ## True if q has norm 1, i.e. is the unit quaternion
   norm(q) == 1
 
-proc normalize*(q : Quaternion) : UnitQuaternion {.raises: [QDivByZeroDefect].} = 
+proc normalize*(q: Quaternion): UnitQuaternion {.raises: [QDivByZeroDefect].} =
   ## Get the normalized Unit Quaternion from q
-  if is_zero(q):      
-     raise newException(QDivByZeroDefect, "Attempted to make transform the zero Quaternion into a unit Quaternion") 
+  if is_zero(q):
+    raise newException(QDivByZeroDefect, "Attempted to make transform the zero Quaternion into a unit Quaternion")
   let q_norm = norm(q)
   let q = q / q_norm
   return to_unit_quaternion(q)
 
-proc distance* (q1 : Quaternion, q2 : Quaternion) : float = 
+proc distance*(q1: Quaternion, q2: Quaternion): float =
   return norm(q2-q1)
