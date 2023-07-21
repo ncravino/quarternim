@@ -1,10 +1,3 @@
-# This is just an example to get you started. You may wish to put all of your
-# tests into a single file, or separate them into multiple `test1`, `test2`
-# etc. files (better names are recommended, just make sure the name starts with
-# the letter 't').
-#
-# To run these tests, simply execute `nimble test`.
-
 import unittest
 
 import quaternim
@@ -20,6 +13,18 @@ test "product":
   let q2 = initQuaternion(6.0,7.0,8.0,9.0) 
   let qr = initQuaternion(-68.0,14.0,36.0,28.0) 
   assert $(q1*q2) == $qr
+
+test "subtraction":
+  let q1 = initQuaternion(1.0,2.0,3.0,4.0) 
+  let q2 = initQuaternion(6.0,7.0,8.0,9.0) 
+  let qr = initQuaternion(-5.0,-5.0,-5.0,-5.0) 
+  assert $(q1-q2) == $qr
+
+test "addition":
+  let q1 = initQuaternion(1.0,2.0,3.0,4.0) 
+  let q2 = initQuaternion(6.0,7.0,8.0,9.0) 
+  let qr = initQuaternion(7.0,9.0,11.0,13.0) 
+  assert $(q1+q2) == $qr
 
 test "scalar multiplication and scalar division":
   let q = initQuaternion(1.0,2.0,3.0,4.0) 
@@ -44,4 +49,29 @@ test "inverse":
 test "unit quaternion":
   let q = initQuaternion(5.0,5.0,5.0,5.0) 
   let qr = initQuaternion(0.5,0.5,0.5,0.5) 
-  assert $(unit(q)) == $qr and is_unit(unit(q))
+  assert $(normalize(q)) == $qr and is_unit(normalize(q)) and is_unit(qr)
+
+test "Zero Quaternion has no Inverse Exception":
+  let q = initQuaternion(0.0,0.0,0.0,0.0) 
+  try:
+    discard inverse(q)
+    assert false
+  except QDivByZeroDefect:
+    assert true 
+  
+test "Attempted to divide the quaternion by 0 Exception":
+  let q = initQuaternion(1.0,2.0,3.0,4.0) 
+
+  try:
+    discard q/0.0
+    assert false
+  except QDivByZeroDefect:
+    assert true 
+
+test "Attempted to make transform the zero Quaternion into a unit Quaternion Exception":
+  let q = initQuaternion(0.0,0.0,0.0,0.0) 
+  try:
+    discard normalize(q)
+    assert false
+  except QDivByZeroDefect:
+    assert true 
